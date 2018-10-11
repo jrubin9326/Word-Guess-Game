@@ -3,33 +3,43 @@ var wins = 0
 // variables that hold references to HTML
 var score = document.getElementById("win-text")
 var currentWord = document.getElementById("currentWord-text")
-var guesses = document.getElementById("guesses")
-var lettersRemaining = document.getElementById("lettersRemaining-text")
-
-
+var wrongGuesses = document.getElementById("guesses")
+var allowedGuesses = document.getElementById("lettersRemaining-text")
+var guessedWord = document.getElementById("guessedWord"); 
+var word; 
+var maxTries = 10
+var remainingGuesses = 0
 // array to hold answers 
-var options = ["Omen", "Sixth Sense", "Silence of the Lambs", "Scream", "Hocus Pocus", "Carrie", "Bettlejuice"]
+var options = ["Omen", "Sixth Sense", "Silence of the Lambs", "Scream", "Hocus Pocus", "Carrie", "Beetlejuice"]
 var choice = Math.floor(Math.random()*7);
 var answer = options[choice]; 
 var wordLength = answer.length; 
+var targetDiv = document.getElementById("currentWord-text")
+
+//function for how game should be look when it is started / reset 
+
 var guessedLetters = []
-var targetDiv = document.getElementById("guessedWord")
 
-//
-var maxTries = 15
-var remainingGuesses = 0
+document.onkeyup() = function startGame () {
+// sets current word to underscores
+    for (var i = 0; i < wordLength; i++) {
+        if (answer[i].match(/[a-zA-Z]/)) {
+            guessedLetters.push("_")
+        } else if (answer[i] === " ") {
+            guessedLetters.push(" ")
+        }
+    } 
+  
+    guessedWord = document.createElement("div")
+    guessedWord.textContent = guessedLetters.join("")
+    currentWord.appendChild(guessedWord)
 
-// function is run anytime user guesses letter 
-// document.onkeyup = function hangman (guess) {
-// // Determines which key was pressed
-// var userGuess = event.key; 
-// //logic determines outcome if guess was correct in the string
-//     if (answer.includes(/guess/i)) {
-// // if true push letter on to guessedLetter array
-//         guessedLetters.push(guess)
-//     }console.log(guess)
-// } 
 
-for (var i in wordLength) {
-    guessedLetters.push("_")
-}
+//  number of guesses remaining should be equal to maxTries
+    var guessesLeft = document.createElement("div")
+    guessesLeft.textContent = maxTries; 
+    wrongGuesses.appendChild(guessesLeft);
+
+
+    
+ } 
