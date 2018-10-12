@@ -16,30 +16,53 @@ var answer = options[choice];
 var wordLength = answer.length; 
 var targetDiv = document.getElementById("currentWord-text")
 
-//function for how game should be look when it is started / reset 
+//function for how game should look when it is started / reset 
 
 var guessedLetters = []
 
-document.onkeyup() = function startGame () {
 // sets current word to underscores
-    for (var i = 0; i < wordLength; i++) {
+    for (let i = 0; i < wordLength; i++) {
         if (answer[i].match(/[a-zA-Z]/)) {
             guessedLetters.push("_")
         } else if (answer[i] === " ") {
             guessedLetters.push(" ")
         }
     } 
-  
-    guessedWord = document.createElement("div")
+    //fill #guessedWord element
     guessedWord.textContent = guessedLetters.join("")
     currentWord.appendChild(guessedWord)
 
+    
+
 
 //  number of guesses remaining should be equal to maxTries
-    var guessesLeft = document.createElement("div")
+    let guessesLeft = document.createElement("div")
     guessesLeft.textContent = maxTries; 
     wrongGuesses.appendChild(guessesLeft);
 
 
-    
- } 
+
+//   function to play game 
+ function start () {
+     //replace underscore with letter where it is equal to answer[i]
+    document.getElementById("guessedWord").innerHTML;
+    var res = str.replace(/_/,function(letter){
+        if (letter === answer[i]) {
+            return letter; 
+        }
+
+    }); 
+    document.getElementById("guessedWord").innerHTML(res); 
+
+    //with that letter
+        // if letter === answer then game is won 
+            //when game is won, update new word
+
+    //if letter is incorrect then update wrong letters
+
+
+        // if wrong letters is equal to >10 then game is over
+            // when game is lose update new word 
+
+};
+
