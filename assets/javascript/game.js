@@ -43,16 +43,17 @@ var guessedLetters = []
 
 
 //   function to play game 
- function start () {
+ function start (letter) {
      //replace underscore with letter where it is equal to answer[i]
-    document.getElementById("guessedWord").innerHTML;
-    var res = str.replace(/_/,function(letter){
+    var str = document.getElementById("guessedWord").innerHTML;
+    var res = str.replace(/_/,function(){
+    for (var i in answer) {
         if (letter === answer[i]) {
             return letter; 
         }
-
+    }
     }); 
-    document.getElementById("guessedWord").innerHTML(res); 
+    document.getElementById("guessedWord").innerHTML = res; 
 
     //with that letter
         // if letter === answer then game is won 
