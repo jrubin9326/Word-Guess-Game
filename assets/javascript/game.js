@@ -28,6 +28,7 @@ var guessedLetters = []
             guessedLetters.push(" ")
         }
     } 
+    
     //fill #guessedWord element
     guessedWord.textContent = guessedLetters.join("")
     currentWord.appendChild(guessedWord)
@@ -41,29 +42,30 @@ var guessedLetters = []
     wrongGuesses.appendChild(guessesLeft);
 
 
-
-//   function to play game 
+    
+// //   function to play game
+var userGuessedWord = [] 
  function start (letter) {
-     //replace underscore with letter where it is equal to answer[i]
-    var str = document.getElementById("guessedWord").innerHTML;
-    var res = str.replace(/_/,function(){
-    for (var i in answer) {
-        if (letter === answer[i]) {
-            return letter; 
+    
+    for ( var i in answer) {
+        if (answer [i] === letter) {
+           guessedLetters[i] = letter; 
+           
         }
-    }
-    }); 
-    document.getElementById("guessedWord").innerHTML = res; 
+    } 
+    console.log(guessedLetters.join(" "))
+    document.getElementById("guessedWord").innerHTML = guessedLetters.join(""); 
+    
+    
+//     //with that letter
+//         // if letter === answer then game is won 
+//             //when game is won, update new word
 
-    //with that letter
-        // if letter === answer then game is won 
-            //when game is won, update new word
-
-    //if letter is incorrect then update wrong letters
+//     //if letter is incorrect then update wrong letters
 
 
-        // if wrong letters is equal to >10 then game is over
-            // when game is lose update new word 
+//         // if wrong letters is equal to >10 then game is over
+//             // when game is lose update new word 
 
 };
-
+    
