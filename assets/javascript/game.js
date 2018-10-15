@@ -15,7 +15,7 @@ var choice = Math.floor(Math.random()*7);
 var answer = options[choice]; 
 var wordLength = answer.length; 
 var targetDiv = document.getElementById("currentWord-text")
-
+var wrongLettersText = document.getElementById("wrongLettersText")
 //function for how game should look when it is started / reset 
 
 
@@ -58,9 +58,8 @@ wrongLetterArray = []
         var wrong = (answer.indexOf(letter)) 
         if (wrong === -1) {
             wrongLetterArray.push(letter); 
-            let wrongArray = document.createElement("div")
-            wrongArray.textContent = wrongLetterArray
-            allowedGuesses.appendChild(wrongArray);
+            wrongLettersText.textContent = wrongLetterArray
+            allowedGuesses.appendChild(wrongLettersText);
             maxTries --
             console.log(maxTries); 
             }
