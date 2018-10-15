@@ -16,6 +16,7 @@ var answer = options[choice];
 var wordLength = answer.length; 
 var targetDiv = document.getElementById("currentWord-text")
 var wrongLettersText = document.getElementById("wrongLettersText")
+var guessesRemaining = document.getElementById("guessesRemaining")
 //function for how game should look when it is started / reset 
 
 
@@ -38,9 +39,9 @@ var guessedLetters = []
 
 
 //  number of guesses remaining should be equal to maxTries
-    let guessesLeft = document.createElement("div")
-    guessesLeft.textContent = maxTries; 
-    wrongGuesses.appendChild(guessesLeft);
+
+    guessesRemaining.textContent = maxTries; 
+    wrongGuesses.appendChild(guessesRemaining);
 
 
     
@@ -61,7 +62,8 @@ wrongLetterArray = []
             wrongLettersText.textContent = wrongLetterArray
             allowedGuesses.appendChild(wrongLettersText);
             maxTries --
-            console.log(maxTries); 
+            document.getElementById("guessesRemaining").innerHTML = maxTries;
+            ; 
             }
         if (maxTries === 0) {
             document.getElementById("gameOver").innerHTML = "Game Over"
