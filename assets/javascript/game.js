@@ -18,6 +18,7 @@ var targetDiv = document.getElementById("currentWord-text")
 
 //function for how game should look when it is started / reset 
 
+
 var guessedLetters = []
 
 // sets current word to underscores
@@ -43,29 +44,46 @@ var guessedLetters = []
 
 
     
-// //   function to play game
-var userGuessedWord = [] 
+// function to play game
+wrongLetterArray = []
  function start (letter) {
     
     for ( var i in answer) {
         if (answer [i] === letter) {
-           guessedLetters[i] = letter; 
+           guessedLetters[i] = letter;
+           document.getElementById("guessedWord").innerHTML = guessedLetters.join(""); 
            
+            } 
+        }   
+        var wrong = (answer.indexOf(letter)) 
+        if (wrong === -1) {
+            wrongLetterArray.push(letter); 
+            let wrongArray = document.createElement("div")
+            wrongArray.textContent = wrongLetterArray
+            allowedGuesses.appendChild(wrongArray);
+            maxTries --
+            console.log(maxTries); 
+            }
+        if (maxTries === 0) {
+            document.getElementById("gameOver").innerHTML = "Game Over"
         }
-    } 
-    console.log(guessedLetters.join(" "))
-    document.getElementById("guessedWord").innerHTML = guessedLetters.join(""); 
+    }
+
+    
+    // console.log(guessedLetters)
+    // document.getElementById("guessedWord").innerHTML = guessedLetters.join(""); 
+    // document.getElementById("guessesLeft").innerHTML = maxTries
     
     
-//     //with that letter
-//         // if letter === answer then game is won 
-//             //when game is won, update new word
+//  with that letter
+//  if letter === answer then game is won 
+//  when game is won, update new word
 
-//     //if letter is incorrect then update wrong letters
+//  if letter is incorrect then update wrong letters
 
 
-//         // if wrong letters is equal to >10 then game is over
-//             // when game is lose update new word 
+//  if wrong letters is equal to >10 then game is over
+//  when game is lose update new word 
 
-};
-    
+
+
