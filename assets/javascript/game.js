@@ -48,6 +48,15 @@ var guessedLetters = []
 // function to play game
 wrongLetterArray = []
 var userAnswer = []
+
+function restartGame () {
+    if (win === -1) {
+        document.getElementById("guessesRemaining").innerHTML = 10
+        document.getElementById("wrongLettersText").innerHTML = []
+        document.getElementById("guessedWord").innerHTML = guessedLetters; 
+    }
+}
+
  function start (letter) {
     
     for ( var i in answer) {
@@ -79,10 +88,17 @@ var userAnswer = []
 
         }
 
+        restartGame()
+
         
     }
 
-    
+function restartGame () {
+    if (win === -1) {
+        document.getElementById("guessesRemaining").innerHTML = 10
+        document.getElementById("wrongLettersText").innerHTML = []
+    }
+}
 
 
 document.onkeydown = function(event) {
